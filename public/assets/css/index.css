@@ -1,0 +1,643 @@
+/* Logout Button Styling */
+.logout-section {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.logout-button {
+    background-color: var(--error-color);
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.logout-button:hover {
+    background-color: #c10000;
+}
+
+.logout-button:active {
+    transform: scale(0.95);
+    background-color: #a00000;
+}
+
+/* Logo and Search Section Layout */
+#kingLogo {
+    cursor: pointer;
+}
+
+.logo-and-search-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.king-logo {
+    max-width: 350px;
+    height: auto;
+    margin-bottom: 4rem;
+}
+
+.search-section {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.phone-number-input {
+    width: 100%;
+    max-width: 500px;
+    height: 3rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    border: 2px solid var(--light-color);
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.phone-number-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(13, 165, 171, 0.5);
+}
+
+.search-button {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.search-button:hover {
+    background-color: var(--secondary-color);
+}
+
+.search-button:active {
+    transform: scale(0.95);
+    background-color: #018a9b;
+}
+
+.error-message {
+    margin-top: 10px;
+}
+
+.customer-info-input {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.customer-info-input:focus {
+    border-color: var(--primary-color, #007bff);
+    box-shadow: 0 0 5px var(--primary-color, #007bff);
+    outline: none;
+}
+
+/* Modernized Customer Info Section */
+.customer-profile {
+    background-color: #f9f9f9;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1rem auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.customer-profile-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.customer-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid var(--light-color);
+    border-radius: 5px;
+    background-color: #ffffff;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.customer-info:hover {
+    background-color: #eef6f8;
+    border-color: var(--primary-color);
+}
+
+.customer-info strong {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.customer-info span {
+    color: var(--secondary-color);
+}
+
+#notFoundSection,
+#fraudulentBehavior {
+    text-align: center;
+}
+
+/* Customer Info Section Styling */
+#notFoundSection {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 0 1rem;
+}
+
+#customerInformationDiv {
+    width: -webkit-fill-available;
+}
+
+.customer-info {
+    font-size: 1rem;
+    color: var(--dark-color);
+    margin: 0.3rem 0;
+}
+
+.customer-info strong {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.customer-info span {
+    color: var(--light-color);
+}
+
+/* Customer Interactions Section Styling */
+#customerInteractionsSection {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column; /* Ensures elements stack vertically */
+}
+
+#interactionsHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+#customerInteractionsSection h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.interactions-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#addInteractionButton {
+    cursor: pointer;
+    margin: 4px 5px 0 0;
+    transition: transform 0.2s ease-in-out;
+}
+
+#addInteractionButton:active #addInteractionButtonRectangle {
+    fill: #018a9b;
+}
+
+#addInteractionButton:hover {
+    transform: scale(1.05);
+}
+
+#customerInteractions ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#customerInteractions li {
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+#customerInteractions li.loading {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+}
+
+/* Fraudulent Behavior Section Styling */
+#fraudulentBehavior {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: var(--error-color);
+    color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid var(--dark-color);
+}
+
+#fraudulentBehavior h4 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.customer-info-button {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 0.5rem;
+}
+
+.customer-info-button:hover {
+    background-color: var(--secondary-color);
+}
+
+.customer-info-button:active {
+    transform: scale(0.95);
+    background-color: #018a9b;
+}
+
+.cancel-button {
+    background-color: var(--error-color);
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.cancel-button:hover {
+    background-color: #c10000;
+}
+
+.cancel-button:active {
+    transform: scale(0.95);
+    background-color: #a00000;
+}
+
+/* Add Interaction Popup Styling */
+#addInteractionPopup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 1rem;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#addInteractionPopup h3 {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+#addInteractionPopup label {
+    font-weight: bold;
+}
+
+#addInteractionPopup select,
+#addInteractionPopup textarea,
+#addInteractionPopup input[type="number"],
+#addInteractionPopup input[type="checkbox"] {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 2px solid var(--light-color);
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#addInteractionPopup select {
+    width: 50% !important;
+}
+
+#addInteractionPopup select:focus,
+#addInteractionPopup textarea:focus,
+#addInteractionPopup input[type="number"]:focus,
+#addInteractionPopup input[type="checkbox"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(13, 165, 171, 0.5);
+}
+
+/* Styling for radio buttons (interaction feedback) */
+#interactionFeedback div {
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+#interactionFeedback input[type="radio"] {
+    margin-right: 0.5rem;
+}
+
+#interactionFeedback label {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+/* Property Value and Rent Value (budget) */
+#addInteractionPopup input[type="number"] {
+    width: 50%;
+    display: inline-block;
+}
+
+/* Styling for checkboxes and labels */
+#reportFraudulentDiv {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#reportFraudulentDiv input[type="checkbox"] {
+    width: auto;
+}
+
+#reportFraudulentDiv label {
+    font-weight: normal;
+    color: var(--error-color);
+}
+
+.interaction-form-element {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+}
+
+.interaction-form-element input[type="number"] {
+    width: 50%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 2px solid var(--light-color);
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.interaction-form-element input[type="number"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(13, 165, 171, 0.5);
+}
+
+/* Popup Overlay */
+#interactionsPopupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+#genericPopupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 8000;
+}
+
+/* Interaction Details Popup Overlay */
+#interactionsDetailsPopupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 7000;
+}
+
+#interactionDetailsPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    width: 100%;
+    max-width: 65%;
+    z-index: 7500;
+}
+
+#interactionDetailsPopup h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    text-align: center;
+    font-weight: bold;
+}
+
+#detailsInteractionDetails {
+    padding: 5px 10px;
+    text-align: justify;
+    border: 1px solid #c8c8c8;
+    border-radius: 5px;
+}
+
+.interaction-form-element {
+    margin: 10px 0;
+}
+
+.interaction-form-element label strong {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+.interaction-form-element span,
+.interaction-form-element p,
+.interaction-form-element div {
+    font-size: 1rem;
+    color: var(--dark-color);
+    line-height: 1.5;
+}
+
+#interactionPopupButtons {
+    place-self: center;
+    margin-top: 25px;
+}
+
+/* Generic Popup Styling */
+#genericPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    z-index: 9000;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    display: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#genericPopup h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+#genericPopup p {
+    font-size: 1rem;
+    color: var(--dark-color);
+    margin-bottom: 1.5rem;
+}
+
+.rating-icon:hover,
+#reportFraudulentLabel:hover {
+    cursor: pointer;
+}
+
+/* Style for disabled form fields */
+input[disabled],
+select[disabled],
+textarea[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Table Styling */
+#customerInteractions table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#customerInteractions th,
+#customerInteractions td {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--light-color);
+}
+
+#customerInteractions th {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+#customerInteractions td {
+    font-size: 0.95rem;
+    color: var(--dark-color);
+}
+
+#customerInteractions tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#customerInteractions tr:hover {
+    background-color: #eef6f8;
+    transition: background-color 0.3s ease;
+}
+
+#customerInteractions img:hover {
+    cursor: pointer;
+}
+
+/* Fraudulent Row Styling */
+#customerInteractions tr.fraudulent {
+    background-color: #ffe6e6;
+    color: #a80000;
+    font-weight: bold;
+}
+
+#customerInteractions tr.fraudulent:hover {
+    background-color: #ffcccc;
+}
+
+#customerInteractions td a {
+    display: flex;
+    align-items: center;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#customerInteractions td a:hover {
+    color: var(--secondary-color);
+}
+
+#customerInteractions td a img {
+    margin-left: 0.5rem;
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+#customerInteractions td a:hover img {
+    transform: scale(1.2);
+}
+
+/* Empty State Styling */
+#customerInteractions tbody td[colspan] {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--dark-color);
+    padding: 1.5rem;
+    background-color: #ffffff;
+}

@@ -1,0 +1,44 @@
+/* Root Colors and Theme Variables */
+:root {
+    --primary-color: #0da5ab;
+    --secondary-color: #02ddf6;
+    --dark-color: #3e3e3d;
+    --light-color: #6b6b6b;
+    --black-color: #000000;
+    --error-color: #da0a0a;
+    --warning-color: #e63c05;
+}
+
+/* Browser Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: var(--light-color);
+}
+
+/* Basic Layout for Main Content */
+body {
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    margin: 0 auto;
+    padding: 1rem;
+    text-align: -webkit-center;
+}
+
+.error-text {
+    color: var(--error-color);
+}

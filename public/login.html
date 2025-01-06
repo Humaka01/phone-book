@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Login | Phone Book</title>
+
+        <!-- Firebase SDK's -->
+        <script defer src="/__/firebase/11.1.0/firebase-app-compat.js"></script>
+        <script defer src="/__/firebase/11.1.0/firebase-auth-compat.js"></script>
+        <script defer src="/__/firebase/11.1.0/firebase-database-compat.js"></script>
+        <script defer src="/__/firebase/init.js"></script>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="/assets/css/main.css" />
+        <link rel="stylesheet" href="/assets/css/login.css" />
+    </head>
+    <body>
+        <main id="mainContent">
+            <div>
+                <div class="login-container">
+                    <!-- Error Message Display -->
+                    <div id="message" class="error-message hidden"></div>
+
+                    <!-- Login Form -->
+                    <form id="login-form" class="form">
+                        <p class="form-title">Agent Login</p>
+
+                        <!-- Email Field -->
+                        <div class="form-group">
+                            <input
+                                type="text"
+                                id="email"
+                                class="form-control"
+                                placeholder="Email"
+                                aria-label="Email"
+                            />
+                            <div id="errorEmail" class="error-message"></div>
+                        </div>
+
+                        <!-- Password Field -->
+                        <div class="form-group">
+                            <input
+                                type="password"
+                                id="password"
+                                class="form-control"
+                                placeholder="Password"
+                                aria-label="Password"
+                            />
+                        </div>
+
+                        <!-- Credential Error -->
+                        <div id="errorCredentials" class="error-message"></div>
+
+                        <!-- Submit Button -->
+                        <button
+                            id="loginButton"
+                            type="submit"
+                            class="btn btn-primary btn-block mb-4"
+                        >
+                            Login
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <script type="module" src="/assets/js/main.js"></script>
+        <script type="module" src="/assets/js/login.js"></script>
+    </body>
+</html>

@@ -1,0 +1,93 @@
+/* Login Container */
+.login-container {
+    background-color: var(--black-color); /* Black background */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Login Title */
+.form-title {
+    color: var(--secondary-color); /* Light Blue */
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+/* Form Inputs */
+.form-control {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--light-color); /* Light Gray */
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: var(--dark-color); /* Dark Gray */
+    color: #ffffff; /* White text */
+}
+
+.form-control::placeholder {
+    color: var(--light-color); /* Light Gray Placeholder */
+}
+
+/* Buttons */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color); /* Teal */
+    color: #ffffff; /* White Text */
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color); /* Light Blue Hover */
+}
+
+/* Error Messages */
+.error-message {
+    color: var(--error-color); /* Light Blue */
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+}
+
+.hidden {
+    display: none; /* Utility class */
+}
+
+#kingLogo {
+    margin: 30px;
+    width: 350px;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 1.5rem;
+    }
+
+    .form-title {
+        font-size: 1.25rem;
+    }
+
+    .form-control,
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+    }
+}

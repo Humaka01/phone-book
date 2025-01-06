@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Home | Phone Book</title>
+
+        <!-- Firebase SDK's -->
+        <script defer src="/__/firebase/11.1.0/firebase-app-compat.js"></script>
+        <script defer src="/__/firebase/11.1.0/firebase-auth-compat.js"></script>
+        <script defer src="/__/firebase/11.1.0/firebase-database-compat.js"></script>
+        <script defer src="/__/firebase/init.js"></script>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="/assets/css/main.css" />
+        <link rel="stylesheet" href="/assets/css/index.css" />
+    </head>
+    <body>
+        <!-- Generic Popup -->
+        <div id="genericPopupOverlay" style="display: none"></div>
+        <div id="genericPopup">
+            <h3 id="popupTitle"></h3>
+            <p id="popupContent"></p>
+            <button id="closePopupButton" class="customer-info-button" type="button">OK</button>
+        </div>
+
+        <!-- Add Interaction Popup -->
+        <div id="interactionsPopupOverlay" style="display: none"></div>
+        <div id="addInteractionPopup" style="display: none">
+            <!-- Title -->
+            <h3>Add New Interaction</h3>
+
+            <!-- Customer’s Intent -->
+            <div class="interaction-form-element">
+                <label id="customerIntentLabel" for="customerIntent">
+                    <strong>Customer’s Intent</strong>
+                </label>
+                <select id="customerIntent" name="customerIntent" required>
+                    <option value="" disabled selected>Select Intent</option>
+                    <option value="search">Search for property</option>
+                    <option value="offer">Offer their property</option>
+                </select>
+            </div>
+
+            <!-- Service Type -->
+            <div class="interaction-form-element">
+                <label id="serviceTypeLabel" for="serviceType"><strong>Service Type</strong></label>
+                <select id="serviceType" name="serviceType" required>
+                    <option value="" disabled selected>Select Service</option>
+                    <option value="sale">Sale</option>
+                    <option value="rent">Rent</option>
+                </select>
+            </div>
+
+            <!-- Budget -->
+            <div class="interaction-form-element">
+                <label id="propertyValueLabel" for="propertyValue">
+                    <strong>Property Value / Budget</strong>
+                </label>
+                <input type="number" id="propertyValue" name="propertyValue" disabled />
+            </div>
+            <div class="interaction-form-element">
+                <label id="rentValueLabel" for="rentValue">
+                    <strong>Rent Value / Budget</strong>
+                </label>
+                <input type="number" id="rentValue" name="rentValue" disabled />
+            </div>
+
+            <!-- Interaction Details -->
+            <label id="interactionDetailsLabel" for="interactionDetails">
+                <strong>Interaction Details:</strong>
+            </label>
+            <textarea
+                id="interactionDetails"
+                name="interactionDetails"
+                rows="4"
+                placeholder="Describe the interaction..."
+            ></textarea>
+
+            <!-- Interaction Feedback -->
+            <p id="interactionFeedbackLabel" for="interactionFeedback">
+                <strong>How was the interaction?</strong>
+            </p>
+            <div id="interactionFeedback">
+                <div>
+                    <input
+                        type="radio"
+                        id="horribleInteraction"
+                        name="interactionFeedback"
+                        value="1"
+                        required
+                    />
+                    <label for="horribleInteraction">
+                        <img
+                            id="horribleIcon"
+                            class="rating-icon"
+                            src="assets/images/smiley-angry.svg"
+                        />
+                    </label>
+                </div>
+                <div>
+                    <input type="radio" id="badInteraction" name="interactionFeedback" value="2" />
+                    <label for="badInteraction">
+                        <img id="badIcon" class="rating-icon" src="assets/images/smiley-sad.svg" />
+                    </label>
+                </div>
+                <div>
+                    <input
+                        type="radio"
+                        id="neutralInteraction"
+                        name="interactionFeedback"
+                        value="3"
+                    />
+                    <label for="neutralInteraction">
+                        <img
+                            id="neutralIcon"
+                            class="rating-icon"
+                            src="assets/images/smiley-neutral.svg"
+                        />
+                    </label>
+                </div>
+                <div>
+                    <input type="radio" id="goodInteraction" name="interactionFeedback" value="4" />
+                    <label for="goodInteraction">
+                        <img
+                            id="goodIcon"
+                            class="rating-icon"
+                            src="assets/images/smiley-good.svg"
+                        />
+                    </label>
+                </div>
+                <div>
+                    <input
+                        type="radio"
+                        id="excellentInteraction"
+                        name="interactionFeedback"
+                        value="5"
+                    />
+                    <label for="excellentInteraction">
+                        <img
+                            id="excellentIcon"
+                            class="rating-icon"
+                            src="assets/images/smiley-happy.svg"
+                        />
+                    </label>
+                </div>
+            </div>
+
+            <!-- Report Fraudulent -->
+            <div id="reportFraudulentDiv">
+                <input id="reportFraudulent" name="reportFraudulent" type="checkbox" />
+                <label id="reportFraudulentLabel" for="reportFraudulent">
+                    Report as Fraudulent
+                </label>
+            </div>
+
+            <!-- Interaction Popup Buttons -->
+            <div id="interactionPopupButtons">
+                <button id="cancelInteractionButton" class="cancel-button" type="button">
+                    Cancel
+                </button>
+                <button id="submitInteractionButton" class="customer-info-button" type="button">
+                    Submit
+                </button>
+            </div>
+        </div>
+
+        <!-- Show Interaction Details Popup -->
+        <div id="interactionsDetailsPopupOverlay" style="display: none"></div>
+        <div id="interactionDetailsPopup" style="display: none" class="popup">
+            <!-- Title -->
+            <h3>Interaction Details</h3>
+
+            <!-- Customer’s Intent -->
+            <div class="interaction-form-element">
+                <label>
+                    <strong>Interaction Date:</strong>
+                </label>
+                <span id="detailsDate"></span>
+            </div>
+
+            <!-- Customer’s Intent -->
+            <div class="interaction-form-element">
+                <label>
+                    <strong>Customer’s Intent:</strong>
+                </label>
+                <span id="detailsCustomerIntent"></span>
+            </div>
+
+            <!-- Service Type -->
+            <div class="interaction-form-element">
+                <label>
+                    <strong>Service Type:</strong>
+                </label>
+                <span id="detailsServiceType"></span>
+            </div>
+
+            <!-- Value / Budget -->
+            <div class="interaction-form-element">
+                <label>
+                    <strong>Value / Budget:</strong>
+                </label>
+                <span id="detailsValue"></span>
+            </div>
+
+            <!-- Interaction Details -->
+            <div class="interaction-form-element">
+                <label>
+                    <strong>Interaction Details:</strong>
+                </label>
+                <span id="detailsNoInteractionDetails" style="display: none"></span>
+            </div>
+            <div class="interaction-form-element">
+                <p id="detailsInteractionDetails" style="display: none"></p>
+            </div>
+
+            <!-- Interaction Feedback -->
+            <div class="interaction-form-element">
+                <label>
+                    <strong>Interaction Feedback:</strong>
+                </label>
+                <div id="detailsInteractionFeedback"></div>
+            </div>
+
+            <!-- Report Fraudulent -->
+            <div class="interaction-form-element">
+                <label>
+                    <strong>Reported as Fraudulent:</strong>
+                </label>
+                <span id="detailsReportedFraudulent"></span>
+            </div>
+
+            <!-- Close Button -->
+            <div id="interactionPopupButtons">
+                <button
+                    id="closeInteractionDetailsPopupButton"
+                    class="customer-info-button"
+                    type="button"
+                >
+                    Close
+                </button>
+            </div>
+        </div>
+
+        <main id="mainContent">
+            <div class="logout-section">
+                <!-- Logout Button -->
+                <button id="logoutButton" class="logout-button" type="button" aria-label="Logout">
+                    Logout
+                </button>
+            </div>
+
+            <div class="logo-and-search-section">
+                    <form id="searchForm" class="search-section">
+                        <!-- Phone Number Input -->
+                        <input
+                            id="phoneNumberInput"
+                            class="phone-number-input"
+                            type="text"
+                            name="phoneNumberInput"
+                            placeholder="Phone Number"
+                            aria-label="Enter phone number"
+                        />
+
+                        <!-- Search Button -->
+                        <button
+                            id="searchButton"
+                            class="search-button"
+                            type="submit"
+                            aria-label="Search"
+                        >
+                            Search
+                        </button>
+                    </form>
+
+                    <!-- Error Field for Phone Number -->
+                    <div id="errorPhoneNumber" class="error-message error-text"></div>
+                </div>
+            </div>
+
+            <!-- Section for Phone Numbers Not in Database -->
+            <section id="notFoundSection" style="display: none">
+                <p>There are no records of this phone number in the database.</p>
+                <form id="registerNewCustomerForm">
+                    <input
+                        id="customerFirstNameInput"
+                        class="customer-info-input"
+                        type="text"
+                        name="customerFirstNameInput"
+                        placeholder="First Name"
+                        aria-label="First Name"
+                    />
+                    <input
+                        id="customerLastNameInput"
+                        class="customer-info-input"
+                        type="text"
+                        name="customerLastNameInput"
+                        placeholder="Last Name"
+                        aria-label="Last Name"
+                    />
+                    <button
+                        id="registerPhoneNumberButton"
+                        class="customer-info-button"
+                        type="submit"
+                        aria-label="Save"
+                    >
+                        Save
+                    </button>
+                </form>
+            </section>
+
+            <section
+                id="customerInformationSection"
+                class="profile-and-interactions-wrapper"
+                style="display: none"
+            >
+                <!-- Fraudulent Behavior Section -->
+                <div id="fraudulentBehavior" class="customer-info" style="display: none">
+                    <h4>FRAUDULENT BEHAVIOUR DETECTED</h4>
+                    <p>
+                        This customer has shown fraudulent behavior in the past. Proceed with
+                        caution.
+                    </p>
+                </div>
+                <!-- Customer Information Section -->
+                <div id="customerInformationDiv" class="customer-profile">
+                    <h2 class="customer-profile-title">Customer Profile</h2>
+                    <div id="customerName" class="customer-info customer-name">
+                        <strong>Name:</strong>
+                        <span id="customerNameSpan"></span>
+                    </div>
+                    <div id="customerPhoneNumber" class="customer-info customer-phone">
+                        <strong>Phone Number:</strong>
+                        <span id="customerPhoneNumberSpan"></span>
+                    </div>
+                    <div id="customerCooperation" class="customer-info customer-cooperation">
+                        <strong>Cooperation Status:</strong>
+                        <span id="customerCooperationSpan"></span>
+                    </div>
+                    <div id="customerFinancialStatus" class="customer-info customer-financial">
+                        <strong>Financial Status:</strong>
+                        <span id="customerFinancialStatusSpan"></span>
+                    </div>
+                    <div id="customerStatus" class="customer-info customer-status">
+                        <strong>Status:</strong>
+                        <span id="customerStatusSpan"></span>
+                    </div>
+                </div>
+
+                <!-- Customer Interactions Section -->
+                <div id="customerInteractionsSection" class="customer-info">
+                    <div id="interactionsHeader">
+                        <h4>Interactions</h4>
+                        <svg
+                            id="addInteractionButton"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="30"
+                            height="30"
+                            viewBox="0 0 30 30"
+                        >
+                            <rect
+                                id="addInteractionButtonRectangle"
+                                width="30"
+                                height="30"
+                                rx="5"
+                                ry="5"
+                                fill="var(--primary-color)"
+                            />
+                            <g
+                                fill="none"
+                                stroke="#fff"
+                                stroke-width="3"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <line x1="8" y1="15" x2="22" y2="15" />
+                                <line x1="15" y1="8" x2="15" y2="22" />
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="interactions-content">
+                        <div id="customerInteractions">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Timestamp</th>
+                                        <th>Intent</th>
+                                        <th>Service</th>
+                                        <th>Rating</th>
+                                        <th>Fraud</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="6">Loading Customer Interactions...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script type="module" src="/assets/js/main.js"></script>
+        <script type="module" src="/assets/js/index.js"></script>
+    </body>
+</html>
